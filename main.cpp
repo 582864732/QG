@@ -301,13 +301,21 @@ void reverse_list()
 {
 	int num = 0;
 	if (!get_single_num(num))return;
-	lists[num]->reverse();
+	if (lists[num]->reverse() == NULL)
+	{
+		error_output("循环链表不能反转");
+	}
 }
 
 void find_midnode()
 {
 	int num = 0;
 	if (!get_single_num(num)) return;
+	if (lists[num]->find_midnode() == NULL)
+	{
+		error_output("循环链表不能寻找中间节点");
+		return;
+	}
 	int midnode = lists[num]->find_midnode()->data;
 	string str = "中间结点的元素是："+to_string(midnode);
 	error_output(str);
