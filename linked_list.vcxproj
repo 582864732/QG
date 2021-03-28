@@ -139,9 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="constant.h" />
+    <ClInclude Include="interface.h" />
     <ClInclude Include="linkedList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="interface.cpp" />
     <ClCompile Include="LL.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
