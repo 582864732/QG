@@ -15,14 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="linkedList.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="interface.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="constant.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="duLinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedList.h">
+      <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +36,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="interface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dulinkedlist.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

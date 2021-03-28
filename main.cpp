@@ -15,13 +15,6 @@ int len = 0;
 void error_output(string str);
 int find_str(string &str,int num=-1);
 void get_nums(string str, int* nums);
-//test func
-//void print(linked_list* l)
-//{
-//	int* nums = new int[l->len()];
-//	l->return_all_nums(nums);
-//	for (int i = 0; i < l->len(); i++) cout << nums[i];
-//}
 bool get_single_num(int &num)
 {
 	string str = "";
@@ -207,6 +200,11 @@ void auto_list(linked_list* list)//auto create a linked list numbers in range 0 
 		error_output("没有生成链表");
 		return;
 	}
+	if (nums > 100)
+	{
+		error_output("最多生成100个数");
+		return;
+	}
 	for (int i = 0; i < nums; i++) list->insert(rand()%100);
 	lists[len] = list;
 	len++;
@@ -301,13 +299,21 @@ void reverse_list()
 {
 	int num = 0;
 	if (!get_single_num(num))return;
-	lists[num]->reverse();
+	if (lists[num]->reverse() == NULL)
+	{
+		error_output("循环链表不能反转");
+	}
 }
 
 void find_midnode()
 {
 	int num = 0;
 	if (!get_single_num(num)) return;
+	if (lists[num]->find_midnode() == NULL)
+	{
+		error_output("循环链表不能寻找中间节点");
+		return;
+	}
 	int midnode = lists[num]->find_midnode()->data;
 	string str = "中间结点的元素是："+to_string(midnode);
 	error_output(str);
