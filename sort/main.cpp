@@ -80,6 +80,7 @@ void allSort(int length,int k)
 	string str2 = "，完成度：";
 	for (int i = 0; i < 6; i++)
 	{
+		i = 5;
 		cout << str1 << sort_name[i] << str2;
 		timeCounter();
 		for (int n = 1; n <= k; n++)
@@ -96,6 +97,11 @@ void allSort(int length,int k)
 			case 3: countSort(nums, length);
 			case 4: radixCountSort(nums, length);
 			case 5:quickSort2(nums, length);
+			}
+			if (!isSorted(nums, length))
+			{
+				cout << "排序出错" << endl;
+				return;
 			}
 			delete[] nums;
 		}
