@@ -44,6 +44,7 @@ void insertSort(int* nums, int length)
 			if (nums[j] < nums[j - 1]) swap(nums, j, j - 1);
 			else break;
 		}
+		//if (isSorted(nums, length)) return;
 	}
 }
 
@@ -126,8 +127,9 @@ void quickSort2(int* nums, int length)
 			lk->pop(end);
 			lk->getTopStack(end);
 			continue;
-
 		}
+		int r = randomNum(first, end);
+		swap(nums[r],nums[end]);
 		int i = first - 1;
 		int j = first;
 		for (; j != end; j++)

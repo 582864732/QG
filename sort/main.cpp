@@ -80,15 +80,16 @@ void allSort(int length,int k)
 	string str2 = "，完成度：";
 	for (int i = 0; i < 6; i++)
 	{
-		i = 5;
+		//i = 5;
 		cout << str1 << sort_name[i] << str2;
-		timeCounter();
+		double total_time=0;
 		for (int n = 1; n <= k; n++)
 		{
 			int* nums = new int[length];
 			randomCreate(nums, length, 0, 10000);
 			setPos(sort_name[i].length() + str1.length()+str2.length(), y);
 			m_surface.loading((float)(n-1) / k * 100);
+			timeCounter();
 			switch (i)
 			{
 			case 0: insertSort(nums, length);
@@ -98,6 +99,7 @@ void allSort(int length,int k)
 			case 4: radixCountSort(nums, length);
 			case 5:quickSort2(nums, length);
 			}
+			total_time+= timeCounter(1);
 			if (!isSorted(nums, length))
 			{
 				cout << "排序出错" << endl;
@@ -105,7 +107,7 @@ void allSort(int length,int k)
 			}
 			delete[] nums;
 		}
-		t[i] = timeCounter(1);
+		t[i] = total_time;
 		setPos(sort_name[i].length() + str1.length() + str2.length(), y);
 		m_surface.loading((float)100);
 		y++;
@@ -229,6 +231,5 @@ int main()
 		case '5':caseFive(); break;
 		}
 	}
-
 	return 0;
 }
