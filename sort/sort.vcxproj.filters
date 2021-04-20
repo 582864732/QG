@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="myfunc.hpp">
+    <ClInclude Include="myfunc.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="sort.hpp">
@@ -24,12 +24,18 @@
     <ClInclude Include="myInterserface.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="linkStack.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="myIntersurface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="myfunc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

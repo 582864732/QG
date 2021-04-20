@@ -1,6 +1,8 @@
 #ifndef SORT_H_
 #define SORT_H_
 #include<iostream>
+#include"linkStack.hpp"
+#include"myfunc.h" 
 using namespace std;
 
 void swap(int* nums, int p, int q)
@@ -46,12 +48,13 @@ void insertSort(int* nums, int length)
 }
 
 //归并排序
-void mergeSort(int *nums,int end,int start = 0)
+void mergeSort(int *nums,int length,int end=-100,int start = 0)
 {
+	if (end == -100) end = length - 1;
 	if (end != start)
 	{
-		mergeSort(nums, (end + start) / 2, start);
-		mergeSort(nums, end, (end + start) / 2 + 1);
+		mergeSort(nums,length, (end + start) / 2, start);
+		mergeSort(nums,length, end, (end + start) / 2 + 1);
 	}
 	else return;
 
@@ -85,8 +88,9 @@ void mergeSort(int *nums,int end,int start = 0)
 }
 
 //快排递归版
-void quickSort(int *nums,int end,int first = 0)
+void quickSort(int *nums,int size,int end=-100,int first = 0)
 {
+	if (end == -100) end = size - 1;
 	if (end <= first)return;
 	int r = randomNum(first, end);
 	swap(nums[end], nums[r]);
@@ -101,8 +105,42 @@ void quickSort(int *nums,int end,int first = 0)
 	}
 	swap(nums[i + 1], nums[end]);
 	if (isSorted(nums, end, first)) return;
-	quickSort(nums, end,i+1);
-	quickSort(nums, i, first);
+	quickSort(nums,size, end,i+1);
+	quickSort(nums,size, i, first);
+}
+
+//快排非递归版
+void quickSort2(int* nums, int length)
+{
+	linkStack<int>* lk = new linkStack<int>;
+	int end = length - 1;
+	int first = 0;
+	lk->push(end);
+	while (true)
+	{
+		lk->getTopStack(end);
+		if (first >= length - 1) return;
+		if (end - first <= 0)
+		{
+			first = end + 2;
+			lk->pop(end);
+			lk->getTopStack(end);
+			continue;
+
+		}
+		int i = first - 1;
+		int j = first;
+		for (; j != end; j++)
+		{
+			if (nums[j] <= nums[end])
+			{
+				i++;
+				swap(nums[i], nums[j]);
+			}
+		}
+		swap(nums[i + 1], nums[end]);
+		lk->push(i);
+	}
 }
 
 //计数排序
@@ -132,6 +170,7 @@ void countSort(int* nums, int length)
 	}
 	delete[] count_nums;
 }
+
 
 //基数计数排序
 void radixCountSort(int* nums, int length)
@@ -164,24 +203,27 @@ void radixCountSort(int* nums, int length)
 	}
 }
 
-//快排非递归版
-void quickSort2(int *nums,int length)
+void rainbowSort(int *nums,int length)
 {
-	int end = length - 1;
-	int first = 0;
-	while (true)
-	{
-		int i = first - 1, j = first;
-		for (; j != end; j++)
+	int pmin = 0, pmax = length - 1, pmid = 0;
+	do{
+		if (nums[pmid] == 0)
 		{
-			if (nums[j] <= nums[end])
-			{
-				i++;
-				swap(nums[i], nums[j]);
-			}
+			swap(nums[pmid], nums[pmin]);
+			pmid++;
+			pmin++;
 		}
-		swap(nums[i + 1], nums[end]);
-	}
+		if (nums[pmid] == 1)
+		{
+			pmid++;
+		}
+		if (pmid > pmax) break;
+		if (nums[pmid] == 2)
+		{
+			swap(nums[pmid], nums[pmax]);
+			pmax--;
+		}
+	} while (pmid <= pmax);
 }
 
 #endif // !SORT_H_

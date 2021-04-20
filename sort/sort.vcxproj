@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="myfunc.hpp" />
+    <ClInclude Include="linkStack.hpp" />
+    <ClInclude Include="myfunc.h" />
     <ClInclude Include="myInterserface.h" />
     <ClInclude Include="sort.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="myfunc.cpp" />
     <ClCompile Include="myIntersurface.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
